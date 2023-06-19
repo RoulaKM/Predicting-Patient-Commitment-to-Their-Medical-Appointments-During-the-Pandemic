@@ -1,0 +1,81 @@
+1_filter:
+Filtered out variables that are not 1 (yes I missed) and 2 (no I did not miss) in Q12
+
+#############################################################
+
+2_prepare: 
+Changed/removed NA values. For variables with more than 10% NAs, missing values were replaced with -1 or 0, depending on the values in each variable.
+-changed: Q7, Q11, Q13, Q16, Q17, Q44, Q51, Q52, Q14
+-removed: Q13-reufused, timing variables, Q9-11-14-16(text)
+
+#########################################################
+
+3_mutate: 
+For Q (56) that has less than 10% NAs, the mice package was used to impute the missing values using a random forest algorithm
+
+##########################################################
+
+4_mean: 
+took the mean of the following 18 questions.
+Q19- Well-being/ psychological and social.
+Q20- Mindfulness
+Q21- Neighborhood social cohesion
+Q22- Support
+Q23- Resilience
+Q24- Loneliness
+Q25- Fear of COVID
+Q27- COVID mis-info
+Q28- Mask in community
+Q29- COVID symptoms knowledge 
+Q30- Susceptibility
+Q31- Severity  
+Q33- COVID safety guidelines
+Q34- Trust in government and healthcare workers
+Q35- behavioral compliance
+Q40- Dissatisfaction with COVID info search 
+Q47- Health Mavenism
+Q48- Health Mavenism on social media
+
+############################################################
+
+5_constant_and_duplicate: 
+checked for constant, quasi constant, and duplicate variables. None were found. 
+
+############################################################
+
+6_visualization: 
+Created table 1 and table 2
+-Table 1. A breakdown of participant demographics, including age, gender, education, income, geographical location, and racial distribution, divided on either missed or did not miss their appointment.
+-Table 2. An overview of the percentage of participants diagnosed with various medical conditions such as diabetes, hypertension, chronic lung disease, arthritis, and other conditions, divided on either missed or did not miss their appointment.
+
+############################################################
+
+7_binary: 
+For consistancy, changed variables that cary 1 for yes and 2 for no to 0 for no and 1 for yes. 
+Also dropped attributes and and two variables ("tm_finish","tm_start")
+
+############################################################
+8_Q13_cat: (the negative dataset)
+
+Change Q13 from text to categorical by replacing the text to a numeric value between 1-6.
+1- general visit
+2- specialty
+3- scan
+4- surgery/procedure
+5- cancer related
+6- virtual 
+-1- NA or empty
+
+###########################################################
+9_positive: 
+changed all -1 (did not answer) to 0. 
+
+###########################################################
+
+10_pos_neg_without: 
+drop Qs 13 and 14 from both negative and positive datasets
+
+###########################################################
+11_log_reg: 
+Find the parsimonious model
+
